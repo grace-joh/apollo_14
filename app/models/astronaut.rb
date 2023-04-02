@@ -6,6 +6,10 @@ class Astronaut < ApplicationRecord
   def self.average_age
     sum = 0
     Astronaut.all.each { |astronaut| sum += astronaut.age }
-    sum.fdiv(Astronaut.all.size).round(2)
+    sum.fdiv(Astronaut.all.size).round(0)
+  end
+
+  def total_time_in_space
+    missions.sum(:time_in_space)
   end
 end
